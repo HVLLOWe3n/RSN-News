@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <div class="row1"></div>
+        <div class="container">
+            <div class="row1">
+                <div class="col-xs-12">
+                    <h2>{{ posts.title }}</h2>
+                    <h4>Published in: {{ posts.published_date }}</h4>
+                    <h5>Author: {{ posts.author }}</h5>
+                    <hr>
+                </div>
+            </div>
+            <div class="row2">
+                <div class="col-xs-12">
+                    <div><span>{{ posts.text }}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-12 text-right">
+        <a href="" class="btn btn-default" style="height:35px;width:130px">Next Post</a>
+        <a href="/" class="btn btn-default" style="height:35px;width:130px">Add Favorite</a>
+        <a href="" class="btn btn-default" style="height:35px;width:130px">Previous Post</a>
+    </div>
+{% endblock %}
