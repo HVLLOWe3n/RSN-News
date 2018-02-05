@@ -13,21 +13,24 @@
     <!-- Fontawesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
+    <!-- Style CSS-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 <body>
     <nav class="navbar navbar-default navbar-collapse">
         <div class="container">
             <div><a href="/"><span class="navbar-text navbar-left"><h2><i class="far fa-newspaper fa-sm"></i> RSN News</h2></span></a></div>
-            <div class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-sign-in-alt"></i> Log In</span></div>
-            <div class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-user-plus"></i> Log Up</span></div>
+            <a href="" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-sign-in-alt"></i> Log In</span></a>
+            <a href="" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-user-plus"></i> Log Up</span></a>
+            <a href="{% url 'post_new' %}" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-pencil-alt"></i> New Post</span></a>
+
         </div>
     </nav>
 
     <div class="container">
-        <div class="row" style="margin-top: 50px;">
-            {% block content %}
-            {% endblock %}
-        </div>
+        {% block content %}
+        {% endblock %}
     </div>
 </body>
 </html>

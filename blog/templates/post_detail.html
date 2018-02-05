@@ -21,8 +21,10 @@
     </div>
 
     <div class="col-xl-12 text-right">
-        <a href="" class="btn btn-default" style="height:35px;width:130px">Next Post</a>
-        <a href="/" class="btn btn-default" style="height:35px;width:130px">Add Favorite</a>
-        <a href="" class="btn btn-default" style="height:35px;width:130px">Previous Post</a>
+        <a href="" class="btn btn-default">Next Post</a>
+        <a href="" class="btn btn-default">Previous Post</a>
+        <a href="{% url 'post_edit' pk=posts.pk %}" class="btn btn-default"><i class="far fa-edit"></i> Edit Post</a>
+        <a href="/" class="btn btn-default"><i class="far fa-star"></i> Add Favorite</a>
     </div>
+
 {% endblock %}
