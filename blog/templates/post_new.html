@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form method="post" class="post-form"> {% csrf_token %}
-        {{ forms.as_table }}
-        <button class="btn btn-default" type="submit">Publish</button>
+    <form action="" method="post" class="post-form"> {% csrf_token %}
+        <div class="col-xs-12 text-center">
+            <input type="text" name="title">
+            <input type="text" name="text">
+
+            <button class="btn btn-default" type="submit">Publish</button>
+        </div>
     </form>
 {% endblock %}

@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.utils.translation import gettext_lazy
+from django.views.generic.edit import UpdateView, DeleteView
 from .models import Post
 from django.utils import timezone
 from django.views import View
@@ -14,7 +16,14 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = Post.objects.get(pk=pk)
-    context = {'posts': post}
+    next_page = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    prev_page = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+
+    context = {
+        'posts': post,
+        'next': next_page,
+        'prev': prev_page,
+    }
 
     return render(request, 'post_detail.html', context)
 
@@ -24,13 +33,13 @@ class Post_New(View):
 
     def get(self, request):
         form = self.form_user(None)
-        context = {'forms': form}
+        context = {'form': form}
 
         return render(request, 'post_new.html', context)
 
     def post(self, request):
         form = self.form_user(request.POST)
-        context = {'forms': form}
+        context = {'form': form}
 
         if form.is_valid():
             post = form.save(commit=False)
@@ -43,30 +52,19 @@ class Post_New(View):
             return render(request, 'post_new.html', context)
 
 
-class Post_Edit(View):
-    form_user = PostForm
-    posts_object = Post
+class Post_Edit(UpdateView):
+    model = Post
+    fields = ['title', 'text']
 
-    def get(self, request, pk):
-        posts = self.posts_object.objects.get(pk=pk)
-        form = self.form_user(instance=posts)                       # Передача данных для редактирования
+    template_name = 'post_new.html'
 
-        context = {'forms': form}
-        return render(request, 'post_new.html', context)
+    def get_success_url(self):
+        print('')
+        return gettext_lazy('/')
 
-    def post(self, request, pk):
-        posts = self.posts_object.objects.get(pk=pk)
 
-        form = self.form_user(request.POST, instance=posts)         # Передача данных для редактирования
-        context = {'forms': form}
+class Post_Delete(DeleteView):
+    model = Post
+    success_url = gettext_lazy('/')
 
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-
-            return redirect('post_detail', pk=post.pk)
-        else:
-            return render(request, 'post_new.html', context)
 

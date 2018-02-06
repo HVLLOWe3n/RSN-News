@@ -2,3 +2,7 @@
     /*height:35px;*/
     /*width:120px;*/
 /*}*/
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
