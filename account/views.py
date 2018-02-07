@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, logout, authenticate
 from django.views.generic.base import View
 
 from .forms import UserForm
@@ -37,3 +37,19 @@ class Sing_Up(View):
                     return redirect('/')
 
         return render(request, 'SignUp.html', context)
+
+
+class Sign_Out(View):
+    def get(self, request):
+        context = {}
+        logout(request)
+
+        return render(request, 'SignOut.html', context)
+
+
+class Sign_In(View):
+    def get(self):
+        pass
+
+    def post(self):
+        pass

@@ -22,7 +22,14 @@
         <div class="container">
             <div><a href="/"><span class="navbar-text navbar-left"><h2><i class="far fa-newspaper fa-sm"></i> RSN News</h2></span></a></div>
             <a href="" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-sign-in-alt"></i> Sign In</span></a>
-            <a href="{% url 'sign_up' %}" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-user-plus"></i> Sign Up</span></a>
+
+            {% if not user.is_authenticated %}
+                <a href="{% url 'sign_up' %}" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-user-plus"></i> Sign Up</span></a>
+            {% else %}
+                <a href="{% url 'sign_out' %}" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-user-plus"></i> Sign Out</span></a>
+            {% endif %}
+
+
             <a href="{% url 'post_new' %}" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-pencil-alt"></i> New Post</span></a>
 
         </div>
