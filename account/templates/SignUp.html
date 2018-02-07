@@ -14,7 +14,7 @@
     </div>
 
 
-    <form action="{% url 'sign_up' %}"> {% csrf_token %}
+    <form action="{% url 'sign_up' %}" method="post"> {% csrf_token %}
         <div class="col-md-5 text-right">
             <div class=text-left><span>Username</span></div>
             <input type="text" name="username" class="form-control" placeholder="Pick a username" aria-describedby="basic-addon1"><br>

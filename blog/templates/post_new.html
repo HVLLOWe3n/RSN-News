@@ -3,8 +3,8 @@
 {% block content %}
     <form action="" method="post" class="post-form"> {% csrf_token %}
         <div class="col-xs-12 text-center">
-            <span>{{ form.title }}</span>
-            <span>{{ form.text }}</span>
+            <input type="text" name="title">
+            <input type="text" name="text">
 
             <button class="btn btn-default" type="submit">Publish</button>
         </div>
