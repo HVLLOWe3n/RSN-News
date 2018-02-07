@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron col-md-12">
+    <div class="post_block">
+          <div class="text-center">
+            <span><h2 class="alt-h0 text-white lh-condensed-ultra mb-3">Sign In to <i class="far fa-newspaper fa-sm"></i> RSN News</h2></span>
+              <form action="{% url 'sign_in' %}" method="post"> {% csrf_token %}
+                  <div class="text-center col-md-5">
+                        <div class=text-center><span>Username</span></div>
+                        <input type="text" name="username" class="form-control" placeholder="Pick a username" aria-describedby="basic-addon1"><br>
+
+                        <div class=text-center><span>Password</span></div>
+                        <input type="password" name="password" class="form-control" placeholder="Pick a password" aria-describedby="basic-addon1"><br>
+
+                        <button type="submit" class="btn btn-primary btn-success f4 btn-block">Sign In</button>
+                  </div>
+              </form>
+          </div>
+    </div>
+{% endblock %}

@@ -4,6 +4,9 @@ from django.views.generic.base import View
 
 from .forms import UserForm
 
+''' Данный модуль предназначен для обработки POST запросов при регистрации и логировании
+и GET запросов'''
+
 
 class Sing_Up(View):
     form_user = UserForm
@@ -48,8 +51,22 @@ class Sign_Out(View):
 
 
 class Sign_In(View):
-    def get(self):
-        pass
+    def get(self, request):
+        context = {}
 
-    def post(self):
-        pass
+        return render(request,  'SignIn.html', context)
+
+    def post(self, request):
+        context = {}
+
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return redirect('/')
+
+        return render(request, 'SignIn.html', context)
