@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron col-md-12">
+    <div class="post_block">
+          <div class="col-md-7 text-center">
+            <span><h1 class="alt-h0 text-white lh-condensed-ultra mb-3">Join to the community</h1></span>
+              <p class="alt-lead mb-4">
+              RSN News is most popular platform for read, editing, posted News.
+                Add, post, share posts through the most famous social networks.
+                Discover the world together with RSN News!
+            </p>
+          </div>
+    </div>
+
+
+    <form action="{% url 'sign_up' %}"> {% csrf_token %}
+        <div class="col-md-5 text-right">
+            <div class=text-left><span>Username</span></div>
+            <input type="text" name="username" class="form-control" placeholder="Pick a username" aria-describedby="basic-addon1"><br>
+
+            <div class=text-left><span>Email</span></div>
+            <input type="text" name="email" class="form-control" placeholder="you@example.com" aria-describedby="basic-addon1"><br>
+
+            <div class=text-left><span>Password</span></div>
+            <input type="password" name="password" class="form-control" placeholder="Create a password" aria-describedby="basic-addon1"><br>
+
+            <button type="submit" class="btn btn-primary btn-success f4 btn-block">Sign UP for RSN News</button>
+            <p class="form-control-note mb-0 text-center"> Welcome to the World, using "RSN News"</p>
+        </div>
+    </form>
+
+    </div>
+{% endblock %}
