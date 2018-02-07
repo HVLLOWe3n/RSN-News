@@ -47,7 +47,7 @@ class Sign_Out(View):
         context = {}
         logout(request)
 
-        return render(request, 'SignOut.html', context)
+        return redirect('/')
 
 
 class Sign_In(View):
