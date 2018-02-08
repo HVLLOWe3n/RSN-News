@@ -27,7 +27,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'renews.pythonanywhere.com']
 
-
 # Application definition
 
 INSTALLED_APPS = [
