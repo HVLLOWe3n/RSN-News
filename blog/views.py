@@ -17,8 +17,8 @@ def post_list(request):
 def post_detail(request, pk):
     try:
         post = Post.objects.get(pk=pk)
-        next_pk = Post.objects.filter(id__gt=pk)[0].id   # Получение следуещего id поста для передачи в url
-        prev_pk = Post.objects.filter(id__gte=pk)[0].id  # Получение предидущего id поста для передачи в url
+        next_pk = Post.objects.filter(id__gt=pk).first().id   # Получение следуещего id поста для передачи в url
+        prev_pk = Post.objects.filter(id__lt=pk).last().id    # Получение предыдущего id поста для передачи в url
 
         context = {
             'posts': post,
