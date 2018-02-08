@@ -15,15 +15,16 @@ def post_list(request):
 
 
 def post_detail(request, pk):
-    post = Post.objects.get(pk=pk)
-    next_page = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    prev_page = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    try:
+        post = Post.objects.get(pk=pk)
+        context = {
+            'posts': post,
+            'next': post.pk + 1,
+            'prev': post.pk - 1,
+        }
 
-    context = {
-        'posts': post,
-        'next': next_page,
-        'prev': prev_page,
-    }
+    except Post.DoesNotExist:
+        return render(request, 'error.html')
 
     return render(request, 'post_detail.html', context)
 
