@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron col-md-12">
+        <div class="post-block">
+            <h1>You Profile</h1><br><br>
+            <div class="col-md-7 text-left">
+                <p>User Name:</p>
+                <p>Email</p>
+                <p>My Posts:</p>
+            </div>
+        </div>
+        <div class="col-md-5 text-right">
+            <div><p>{{ user.username }}</p></div>
+            <div><p>{{ user.email }}</p></div>
+            <a href="{% url 'myposts' %}" class="btn btn-default">My Posts</a>
+        </div>
+    </div>
+{% endblock %}

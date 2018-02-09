@@ -28,7 +28,7 @@
             {% else %}
                 <a href="{% url 'sign_out' %}" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-sign-out-alt"></i> Sign Out</span></a>
                 <a href="{% url 'post_new' %}" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-pencil-alt"></i> New Post</span></a>
-                <a href="" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-user"></i> My Profile</span></a>
+                <a href="{% url 'profile' %}" class="navbar-text navbar-brand navbar-right"><span class="btn btn-default"><i class="fas fa-user"></i> My Profile</span></a>
             {% endif %}
         </div>
     </nav>

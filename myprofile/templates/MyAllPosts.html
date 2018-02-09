@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    {% for p in post %}
+        {% if user.id == p.author_id %}
+        <div class="jumbotron col-md-12">
+            <div class="post-block">
+                <h1>You Posts:</h1><br><br>
+                <div class="col-md-7 text-left">
+                    <p>Title:</p>
+                    <p>Published:</p>
+                    <p>Author:</p>
+                </div>
+            </div>
+            <div class="col-md-5 text-right">
+                <div><p>{{ p.title }}</p></div>
+                <div><p>{{ p.published_date }}</p></div>
+                <div><p>{{ user.username }}</p></div>
+            </div><br><br>
+            <div class="col-xl-12 text-center">
+                <form action="{% url 'post_delete' pk=p.pk%}" method="post"> {% csrf_token %}
+                    <button type="submit" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
+                    <a href="{% url 'post_edit' pk=p.pk %}" class="btn btn-default"><i class="far fa-edit"></i> Edit Post</a><br><br>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
