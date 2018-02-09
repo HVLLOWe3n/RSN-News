@@ -8,12 +8,14 @@
                 <p>User Name:</p>
                 <p>Email</p>
                 <p>My Posts:</p>
+                <p>My Favorites:</p>
             </div>
         </div>
         <div class="col-md-5 text-right">
             <div><p>{{ user.username }}</p></div>
             <div><p>{{ user.email }}</p></div>
-            <a href="{% url 'myposts' %}" class="btn btn-default">My Posts</a>
+            <a href="{% url 'myposts' %}" class="btn btn-default">My Posts</a><br>
+            <a href="" class="btn btn-default"><i class="far fa-star"></i> My Favorites</a>
         </div>
     </div>
 {% endblock %}

@@ -16,3 +16,8 @@ class My_Posts(View):
         context = {'post': post}
         return render(request, 'MyAllPosts.html', context)
 
+
+class None_Post(View):
+    def get(self, request):
+        context = {}
+        return render(request, 'NonePost.html', context)

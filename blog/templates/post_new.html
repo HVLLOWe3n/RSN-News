@@ -3,10 +3,13 @@
 {% block content %}
     <form action="" method="post" class="post-form"> {% csrf_token %}
         <div class="col-xs-12 text-center">
-            <input type="text" name="title">
-            <input type="text" name="text">
+            <h2 class="text-left">Change Title</h2>
+            <textarea class="form-control" id="id_content" rows="1" name="title">{{ post.title }}</textarea> <br>
+            <h3 class="text-left">Change Text</h3>
+            <textarea class="form-control" id="id_content" rows="5" name="text">{{ post.text }}</textarea>
+            <br><br><br><br>
 
-            <button class="btn btn-default" type="submit">Publish</button>
+            <button class="btn btn-primary btn-success f4 btn-block" type="submit">Publish changed post</button>
         </div>
     </form>
 {% endblock %}
