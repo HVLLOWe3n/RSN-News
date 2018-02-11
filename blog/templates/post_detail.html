@@ -22,12 +22,12 @@
 
     <div class="col-xl-12 text-right">
         {% if next == None %}
-            <a href="{% url 'post_detail' pk=prev %}" class="btn btn-default">Previous Post <i class="far fa-hand-point-right"></i></a>
+            <a href="{% url 'post_detail' pk=prev %}" class="btn btn-default">Next Post <i class="far fa-hand-point-right"></i></a>
         {% elif prev == None %}
-            <a href="{% url 'post_detail' pk=next %}" class="btn btn-default"><i class="far fa-hand-point-left"></i> Next Post</a>
+            <a href="{% url 'post_detail' pk=next %}" class="btn btn-default"><i class="far fa-hand-point-left"></i> Previous Post</a>
         {% else %}
-            <a href="{% url 'post_detail' pk=next %}" class="btn btn-default"><i class="far fa-hand-point-left"></i> Next Post</a>
-            <a href="{% url 'post_detail' pk=prev %}" class="btn btn-default">Previous Post <i class="far fa-hand-point-right"></i></a>
+            <a href="{% url 'post_detail' pk=next %}" class="btn btn-default"><i class="far fa-hand-point-left"></i> Previous Post</a>
+            <a href="{% url 'post_detail' pk=prev %}" class="btn btn-default">Next Post <i class="far fa-hand-point-right"></i></a>
 
         {% endif %}
 
