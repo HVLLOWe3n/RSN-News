@@ -14,22 +14,37 @@ def post_list(request):
     return render(request, 'post_list.html', context)
 
 
-def post_detail(request, pk):
-    try:
-        post = Post.objects.get(pk=pk)
-        next_pk = Post.objects.filter(id__gt=pk).first().id   # Получение следуещего id поста для передачи в url
-        prev_pk = Post.objects.filter(id__lt=pk).last().id    # Получение предыдущего id поста для передачи в url
+class Post_Detail(View):
 
-        context = {
-            'posts': post,
-            'next': next_pk,
-            'prev': prev_pk,
-        }
+    def get(self, request, pk):
+        try:
+            post = Post.objects.get(pk=pk)
 
-    except Post.DoesNotExist:
-        return render(request, 'error.html')
+            # получение всех id из таблицы Post, 'id' - поле получения записей, flat - получение всех значений в list
+            id_list = Post.objects.values_list('id', flat=True)
 
-    return render(request, 'post_detail.html', context)
+            if pk != id_list.last():
+                next_id = Post.objects.filter(id__gt=pk).first().id  # Получение следуещего id поста для передачи в url
+
+            else:
+                next_id = None
+
+            if pk != id_list.first():
+                prev_id = Post.objects.filter(id__lt=pk).last().id  # Получение предыдущего id поста для передачи в url
+
+            else:
+                prev_id = None
+
+            context = {
+                'posts': post,
+                'next': next_id,
+                'prev': prev_id,
+            }
+
+        except Post.DoesNotExist:
+            return render(request, 'error.html')
+
+        return render(request, 'post_detail.html', context)
 
 
 class Post_New(View):
