@@ -6,3 +6,11 @@
 .post-form textarea, .post-form input {
     width: 100%;
 }
+
+a {
+    text-decoration: none;
+}
+
+.abouted {
+ display:inline-block;
+}

@@ -44,7 +44,6 @@ class Sing_Up(View):
 
 class Sign_Out(View):
     def get(self, request):
-        context = {}
         logout(request)
 
         return redirect('/')
@@ -70,3 +69,10 @@ class Sign_In(View):
                 return redirect('/')
 
         return render(request, 'SignIn.html', context)
+
+
+class About(View):
+    def get(self, request):
+        context = {}
+
+        return render(request, 'AboutUs.html', context)
