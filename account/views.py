@@ -5,7 +5,7 @@ from django.views.generic.base import View
 from .forms import UserForm
 
 ''' Данный модуль предназначен для обработки POST запросов при регистрации и логировании
-и GET запросов'''
+и GET запросов, а так же рендере страниц '''
 
 
 class Sing_Up(View):
