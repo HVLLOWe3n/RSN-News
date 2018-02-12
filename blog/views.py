@@ -85,5 +85,3 @@ class Post_Edit(UpdateView):
 class Post_Delete(DeleteView):
     model = Post
     success_url = gettext_lazy('/')
-
-

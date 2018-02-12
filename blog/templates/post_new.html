@@ -3,9 +3,9 @@
 {% block content %}
     <form action="" method="post" class="post-form"> {% csrf_token %}
         <div class="col-xs-12 text-center">
-            <h2 class="text-left">Change Title</h2>
+            <h2 class="text-left">Create Title</h2>
             <textarea class="form-control" id="id_content" rows="1" name="title">{{ post.title }}</textarea> <br>
-            <h3 class="text-left">Change Text</h3>
+            <h3 class="text-left">Create Text</h3>
             <textarea class="form-control" id="id_content" rows="7" name="text">{{ post.text }}</textarea>
             <br><br><br><br>
 
